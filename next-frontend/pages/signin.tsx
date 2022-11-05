@@ -16,11 +16,10 @@ const SignIn = () => {
     password: ""
   })
 
-  const handleLogin = (e: any) => {
-    //e.preventDefault()
-    requestService.loginUser(user)
+  const handleLogin = async (e: any) => {
     e.preventDefault()
-    router.push('/')
+    await requestService.loginUser(user)
+    //e.preventDefault()
     router.push('/')
   }
 
