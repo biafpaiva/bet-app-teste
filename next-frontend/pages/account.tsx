@@ -9,6 +9,9 @@ const Account = () => {
   const { showTabBar, setShowTabBar } = useContext(tabBarContext);
   setShowTabBar(true)
 
+  const [showModal, setShowModal] = useState(false);
+  const [username, setUsername] = useState('')
+
   const [user, setUser] = useState<any>()
   const router = useRouter()
   
@@ -30,7 +33,13 @@ const Account = () => {
     e.preventDefault()
     requestService.logoutUser()
     router.push('/signin')
-    
+  }
+
+  const handleChangeUsername = (e: any) => {
+    e.preventDefault()
+    requestService.changeUsername(user)
+    setUser({email: user.email, username: username})
+    setShowModal(false)
   }
 
   return (
@@ -42,15 +51,15 @@ const Account = () => {
         <h2 className='text-center font-bold tracking-tight text-primaryLight text-xl'>{user?.username}</h2>
         <p className='text-center text-primaryLight text-lg'>{user?.email}</p>
 
-        {/* <button className='flex items-center mt-[60px] pb-2'>
+        <button onClick={() => setShowModal(true)} className='flex items-center mt-[60px] pb-2'>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
             <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 12c0-1.232-.046-2.453-.138-3.662a4.006 4.006 0 00-3.7-3.7 48.678 48.678 0 00-7.324 0 4.006 4.006 0 00-3.7 3.7c-.017.22-.032.441-.046.662M19.5 12l3-3m-3 3l-3-3m-12 3c0 1.232.046 2.453.138 3.662a4.006 4.006 0 003.7 3.7 48.656 48.656 0 007.324 0 4.006 4.006 0 003.7-3.7c.017-.22.032-.441.046-.662M4.5 12l3 3m-3-3l-3 3" />
           </svg>
           <div className='ml-4'>Change username</div>
         </button>
-        <hr className='border-secondaryDark'/> */}
+        <hr className='border-secondaryDark'/>
         <form >
-          <button onClick={handleLogout} type='submit' className='flex items-center mt-[60px] pb-2'>
+          <button onClick={handleLogout} type='submit' className='flex items-center pt-5 pb-2'>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
               <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" />
             </svg>
@@ -67,6 +76,46 @@ const Account = () => {
             <div className='ml-4'>Delete account</div>
           </button>
         </form>
+
+        {showModal ? (
+        <>
+          <div
+            className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
+          >
+            <div className="relative w-auto my-6 mx-5 max-w-3xl">
+              {/*content*/}
+              <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+                {/*header*/}
+                <div className='pt-10 px-5 text-center text-xl font-bold tracking-tight text-primaryDark'>Change username</div>
+
+                {/*body*/}
+                <form className='flex justify-center m-10 drop-shadow-xl text-primaryDark' action="http://localhost:5000/make_bet" method="POST">
+                  <input value={username} onChange={(e) => {
+                  setUsername(e.target.value)}} name='home_score' className='text-primaryDark aspect-square p-4 w-[180px] h-[60px] border rounded-md' type="text" />
+                </form>
+                {/*footer*/}
+                <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
+                  <button
+                    className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                    type="button"
+                    onClick={() => setShowModal(false)}
+                  >
+                    Close
+                  </button>
+                  <button
+                    className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                    type="submit"
+                    onClick={handleChangeUsername}
+                  >
+                    Save
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+        </>
+      ) : null}
 
     </div>
   )

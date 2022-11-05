@@ -16,4 +16,4 @@ def show_delete_bet():
         cursor = db.cursor()
         cursor.execute("DELETE FROM bets WHERE id_game = '" + id_game + "' AND email = '" + email + "'")
         db.commit()
-        return ok
+        return 'ok'

@@ -1,6 +1,7 @@
 import api from './api'
 import PropTypes from 'prop-types'
 import { IBet } from '../../types/bets'
+import { IUser } from '../../types/user'
 
 interface PropTypes {
   email: string,
@@ -74,6 +75,26 @@ const deleteBet = (bet: IBet) => {
   }) 
 }
 
+const changeUsername = (user: IUser) => {
+
+  const formData = new FormData();
+  formData.set('username', user.username)
+  formData.set('email', user.email)
+
+  return api.post("/change_username", formData, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    }})
+  .then((response) => {
+    if (response) {
+         /*localStorage.setItem("user", JSON.stringify(response.data))*/
+         console.log(user.email)
+         console.log(response)
+    }
+    return response
+  }) 
+}
+
 
 const listRanking = () => {
   return api.get("/list_ranking")
@@ -111,7 +132,8 @@ const requestService = {
     listBets,
     listRanking,
     makeBet,
-    deleteBet
+    deleteBet,
+    changeUsername
 }
 
 export default requestService
