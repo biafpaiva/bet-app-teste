@@ -47,5 +47,4 @@ def getImage():
         'https://images.unsplash.com/photo-1607544155801-4f5af2e88dc6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjc0fHxjYXRzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=400&q=60',
         'https://images.unsplash.com/photo-1548178235-bd0e8c71cc05?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzI2fHxjYXRzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=400&q=60',
     ]
-
-    return random.choice(images)
+    return images[random. randint(0, len(images))]
