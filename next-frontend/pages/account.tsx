@@ -17,6 +17,8 @@ const Account = () => {
   
   useEffect(() => {
     if (localStorage.getItem("user") === null){
+      const temp = localStorage.getItem('item')
+      setUser(temp)
       router.push('/signin')
     }
   }, []);
@@ -35,11 +37,13 @@ const Account = () => {
     router.push('/signin')
   }
 
-  const handleChangeUsername = (e: any) => {
+  const handleChangeUsername = async (e: any) => {
     e.preventDefault()
-    requestService.changeUsername(user)
-    setUser({email: user.email, username: username})
+    const user_data = {'username': username, 'email': user.email}
+    await requestService.changeUsername(user_data)
     setShowModal(false)
+
+    router.reload()
   }
 
   return (

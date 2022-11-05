@@ -8,7 +8,7 @@ change_username = Blueprint('change_username', __name__)
 
 def show_change_username():
     if request.method == 'POST':
-        username = request.form['username']
+        username = str(request.form['username'])
         email = request.form['email']
         db = get_db_connection()
         cur = db.cursor()
@@ -16,4 +16,4 @@ def show_change_username():
         db.commit()
 
         #return redirect('http://localhost:3000/')
-        return 'ok'
+        return username

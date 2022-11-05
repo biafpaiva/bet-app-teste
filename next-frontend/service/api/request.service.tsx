@@ -75,7 +75,7 @@ const deleteBet = (bet: IBet) => {
   }) 
 }
 
-const changeUsername = (user: IUser) => {
+const changeUsername = (user: any) => {
 
   const formData = new FormData();
   formData.set('username', user.username)
