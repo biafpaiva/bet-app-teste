@@ -1,0 +1,178 @@
+[
+    {
+      "id": 1,
+      "round": "O1",
+      "weekDay": "SÁB",
+      "date": "03/12/2022",
+      "time": "12:00",
+      "stadium": "INTERNACIONAL KHALIFA",
+      "teams": "1A x 2B",
+      "home": "1A",
+      "visitor": "2B"
+    },
+    {
+      "id": 2,
+      "round": "O2",
+      "weekDay": "SÁB",
+      "date": "03/12/2022",
+      "time": "16:00",
+      "stadium": "AL RAYYAN",
+      "teams": "1C x 2D",
+      "home": "1C",
+      "visitor": "2D"
+    },
+    {
+      "id": 3,
+      "round": "O3",
+      "weekDay": "SEG",
+      "date": "05/12/2022",
+      "time": "12:00",
+      "stadium": "AL WAKRAH",
+      "teams": "1E x 2F",
+      "home": "1E",
+      "visitor": "2F"
+    },
+    {
+      "id": 4,
+      "round": "O4",
+      "weekDay": "SEG",
+      "date": "05/12/2022",
+      "time": "16:00",
+      "stadium": "PORTO DE DOHA",
+      "teams": "1G x 2H",
+      "home": "1G",
+      "visitor": "2H"
+    },
+    {
+      "id": 5,
+      "round": "O5",
+      "weekDay": "DOM",
+      "date": "04/12/2022",
+      "time": "16:00",
+      "stadium": "AL KHOR",
+      "teams": "1B x 2A",
+      "home": "1B",
+      "visitor": "2A"
+    },
+    {
+      "id": 6,
+      "round": "O6",
+      "weekDay": "DOM",
+      "date": "04/12/2022",
+      "time": "12:00",
+      "stadium": "AL THUMAMA",
+      "teams": "1D x 2C",
+      "home": "1D",
+      "visitor": "2C"
+    },
+    {
+      "id": 7,
+      "round": "O7",
+      "weekDay": "TER",
+      "date": "06/12/2022",
+      "time": "12:00",
+      "stadium": "CIDADE DA EDUCAÇÃO",
+      "teams": "1F x 2E",
+      "home": "1F",
+      "visitor": "2E"
+    },
+    {
+      "id": 8,
+      "round": "O8",
+      "weekDay": "TER",
+      "date": "06/12/2022",
+      "time": "16:00",
+      "stadium": "NACIONAL DE LUSAIL",
+      "teams": "1H x 2G",
+      "home": "1H",
+      "visitor": "2G"
+    },
+    {
+      "id": 9,
+      "round": "Q1",
+      "weekDay": "SEX",
+      "date": "09/12/2022",
+      "time": "16:00",
+      "stadium": "NACIONAL DE LUSAIL",
+      "teams": "Venc. O1 x Venc. O2",
+      "home": "O1",
+      "visitor": "O2"
+    },
+    {
+      "id": 10,
+      "round": "Q2",
+      "weekDay": "SEX",
+      "date": "09/12/2022",
+      "time": "12:00",
+      "stadium": "CIDADE DA EDUCAÇÃO",
+      "teams": "Venc. O3 x Venc. O4",
+      "home": "O3",
+      "visitor": "O4"
+    },
+    {
+      "id": 11,
+      "round": "Q3",
+      "weekDay": "SÁB",
+      "date": "10/12/2022",
+      "time": "16:00",
+      "stadium": "AL KHOR",
+      "teams": "Venc. O5 x Venc. O6",
+      "home": "O5",
+      "visitor": "O6"
+    },
+    {
+      "id": 12,
+      "round": "Q4",
+      "weekDay": "SÁB",
+      "date": "10/12/2022",
+      "time": "12:00",
+      "stadium": "AL THUMAMA",
+      "teams": "Venc. O7 x Venc. O8",
+      "home": "O7",
+      "visitor": "O8"
+    },
+    {
+      "id": 13,
+      "round": "S1",
+      "weekDay": "TER",
+      "date": "13/12/2022",
+      "time": "16:00",
+      "stadium": "NACIONAL DE LUSAIL",
+      "teams": "Venc. Q1 x Venc. Q2",
+      "home": "Q1",
+      "visitor": "Q2"
+    },
+    {
+      "id": 14,
+      "round": "S2",
+      "weekDay": "QUA",
+      "date": "14/12/2022",
+      "time": "16:00",
+      "stadium": "AL KHOR",
+      "teams": "Venc. Q3 x Venc. Q4",
+      "home": "Q3",
+      "visitor": "Q4"
+    },
+    {
+      "id": 15,
+      "round": "3L",
+      "weekDay": "SÁB",
+      "date": "17/12/2022",
+      "time": "12:00",
+      "stadium": "INTERNACIONAL KHALIFA",
+      "teams": "Perd. S1 x Perd. S2",
+      "home": "PS1",
+      "visitor": "PS2"
+    },
+    {
+      "id": 16,
+      "round": "F",
+      "weekDay": "DOM",
+      "date": "18/12/2022",
+      "time": "12:00",
+      "stadium": "NACIONAL DE LUSAIL",
+      "teams": "Venc. S1 x Venc. S2",
+      "home": "VS1",
+      "visitor": "VS2"
+    }
+  ]

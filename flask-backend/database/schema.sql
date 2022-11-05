@@ -28,6 +28,20 @@ CREATE TABLE matches (
     winner TEXT
 );
 
+DROP TABLE IF EXISTS matches_finals;
+
+CREATE TABLE matches_finals (
+    id_ INTEGER,
+    round TEXT NOT NULL,
+    day_of_week TEXT NOT NULL,
+    date_ TEXT NOT NULL,
+    time_ TEXT NOT NULL,
+    stadium TEXT NOT NULL,
+    teams TEXT NOT NULL,
+    home TEXT NOT NULL,
+    visitor TEXT NOT NULL
+);
+
 DROP TABLE IF EXISTS bets;
 
 CREATE TABLE bets (
@@ -38,5 +52,6 @@ CREATE TABLE bets (
     email TEXT INTEGER,
     winner TEXT,
     score INTEGER,
+    group_ TEXT,
     CONSTRAINT only_ unique (id_game,email)
 );
