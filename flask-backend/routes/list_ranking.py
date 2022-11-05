@@ -7,7 +7,7 @@ list_ranking = Blueprint('list_ranking', __name__)
 def show_list_ranking():
     db = get_db_connection()
     cursor = db.cursor()
-    query = "SELECT username, score FROM users"
+    query = "SELECT username, score, image FROM users"
     cursor.execute(query)
     users = [dict((cursor.description[i][0], value) \
                for i, value in enumerate(row)) for row in cursor.fetchall()]

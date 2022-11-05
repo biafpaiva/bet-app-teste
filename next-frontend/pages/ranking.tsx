@@ -11,13 +11,16 @@ const Ranking = () => {
 
   const { showTabBar, setShowTabBar } = useContext(tabBarContext);
   setShowTabBar(true)  
-
+  const [userImage, setImage] = useState<any>('')
   const [users, setUsers] = useState<IUser[]>([])
   const router = useRouter()
 
   useEffect(() => {
     if (localStorage.getItem("user") === null){
       router.push('/signin')
+    } else {
+      const temp2 = localStorage.getItem('image')
+      setImage(temp2)
     }
   }, []);
 

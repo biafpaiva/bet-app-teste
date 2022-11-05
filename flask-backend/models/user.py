@@ -1,6 +1,6 @@
 from flask import session
 import sqlite3
-from services.utils import is_valid
+from services.utils import getImage
 
 class User:
     def __init__(self, nome, email, senha):
@@ -14,7 +14,7 @@ class User:
         with sqlite3.connect('database/database.db') as con:
             try:
                 cur = con.cursor()
-                cur.execute('INSERT INTO users (username, email, password) VALUES (?, ?, ?)', (self.nome, self.email, self.senha))
+                cur.execute('INSERT INTO users (username, email, password, image) VALUES (?, ?, ?, ?)', (self.nome, self.email, self.senha, getImage()))
 
                 con.commit()
 

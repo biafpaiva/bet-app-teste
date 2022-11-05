@@ -9,7 +9,7 @@ const RankingCard = ({position, user}: PropTypes) => {
         <div className="grid grid-cols-5 content-center items-center place-items-center place-content-between text-primaryLight font-bold tracking-tight">
             <div className='col-span-auto -mx-[80px]'>{position} th</div>
             <div className='w-[60px] -ml-1 m-auto bg-primaryLight aspect-square rounded-full overflow-hidden'>
-              <img className='object-cover' src={ getPicture() } alt="" />
+              <img className='object-cover' src={ user.image } alt="" />
             </div>
             <div className='pl-5'> {user.username} </div>
             <div className='col-span-2 text-md'>{user.score ? user.score : 0} points</div>

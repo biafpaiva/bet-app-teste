@@ -16,10 +16,10 @@ def show_login_user():
             db = get_db_connection()
             cur = db.cursor()
             cur.execute("UPDATE users SET logged = 1 WHERE email = '" + email + "'")
-            cur.execute("SELECT username FROM users WHERE email =  '" + email + "'")
-            username = cur.fetchone()
+            cur.execute("SELECT username, image FROM users WHERE email =  '" + email + "'")
+            username, image = cur.fetchone()
             db.commit()
-            data = [{'username': username, 'email': email, 'password': password}]
+            data = [{'username': username, 'email': email, 'password': password, 'image': str(image)}]
 
             #return redirect('http://localhost:3000/')
             return jsonify(data)

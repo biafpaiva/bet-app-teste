@@ -28,6 +28,7 @@ const loginUser = ({email, password}: PropTypes) => {
   .then((response) => {
     if (response.data) {
          localStorage.setItem("user", JSON.stringify(response.data))
+         localStorage.setItem('image', JSON.stringify(response.data[0].image))
          console.log(response.data.token)
     }
     return response.data

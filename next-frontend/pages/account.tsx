@@ -3,6 +3,7 @@ import { getPicture } from '../utils/getPicture';
 import requestService from '../service/api/request.service';
 import { tabBarContext } from './_app';
 import { useRouter } from 'next/router';
+import Image from 'next/image';
 
 const Account = () => {
 
@@ -11,15 +12,19 @@ const Account = () => {
 
   const [showModal, setShowModal] = useState(false);
   const [username, setUsername] = useState('')
+  const [userImage, setImage] = useState<any>('')
 
   const [user, setUser] = useState<any>()
   const router = useRouter()
-  
+
   useEffect(() => {
     if (localStorage.getItem("user") === null){
-      const temp = localStorage.getItem('item')
+      const temp = localStorage.getItem('user')
       setUser(temp)
       router.push('/signin')
+    } else {
+      const temp2 = localStorage.getItem('image')
+      setImage(temp2)
     }
   }, []);
 
@@ -49,7 +54,7 @@ const Account = () => {
   return (
     <div className='flex flex-col min-w-screen min-h-screen bg-primaryDark pt-[60px] px-6 justify-items-center text-primaryLight'>
         <div className='w-[120px] mb-6 mx-auto bg-primaryLight aspect-square rounded-full overflow-hidden'>
-          <img src={getPicture()} alt="" />
+          <img src={userImage.slice(1, -1)} alt="" />
         </div>
         
         <h2 className='text-center font-bold tracking-tight text-primaryLight text-xl'>{user?.username}</h2>
@@ -93,7 +98,7 @@ const Account = () => {
                 <div className='pt-10 px-5 text-center text-xl font-bold tracking-tight text-primaryDark'>Change username</div>
 
                 {/*body*/}
-                <form className='flex justify-center m-10 drop-shadow-xl text-primaryDark' action="http://localhost:5000/make_bet" method="POST">
+                <form className='flex justify-center m-10 drop-shadow-xl text-primaryDark'>
                   <input value={username} onChange={(e) => {
                   setUsername(e.target.value)}} name='home_score' className='text-primaryDark aspect-square p-4 w-[180px] h-[60px] border rounded-md' type="text" />
                 </form>

@@ -6,7 +6,8 @@ CREATE TABLE users (
     email TEXT NOT NULL unique ,
     password TEXT NOT NULL,
     score FLOAT,
-    logged INTEGER
+    logged INTEGER,
+    image TEXT
 );
 
 DROP TABLE IF EXISTS matches;
