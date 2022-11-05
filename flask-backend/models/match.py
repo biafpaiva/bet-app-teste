@@ -17,7 +17,7 @@ class Match:
         self.is_over = list[12]
         self.winner = list[13]
 
-    def register_final_score(self, final_score_home, final_score_visitor):
+    def register_final_score(final_score_home, final_score_visitor, game_id):
         if final_score_home > final_score_visitor:
             winner = "home"
         if final_score_home < final_score_visitor:
@@ -29,7 +29,7 @@ class Match:
             try:
                 cur = con.cursor()
                 cur.execute('UPDATE matches SET final_score_home = ?, final_score_visitor = ?, is_over = ?, winner = ? WHERE id_ = ?',
-                            (final_score_home, final_score_visitor, 1, winner, int(self.id)))
+                            (final_score_home, final_score_visitor, 1, winner, int(game_id)))
 
                 con.commit()
 

@@ -1,7 +1,7 @@
 import { useState, useContext, createContext } from 'react'
 import MainLayout from '../layouts/MainLayout'
 import requestService from '../service/api/request.service';
-import { tabBarContext } from '../pages/_app'
+import { AdminContext, tabBarContext } from '../pages/_app'
 import { useRouter } from 'next/router';
 import Toast from '../components/Toast'
 
@@ -13,6 +13,7 @@ const SignIn = () => {
   const { showTabBar, setShowTabBar } = useContext(tabBarContext);
   setShowTabBar(false)
 
+  const { isAdmin, setIsAdmin } = useContext(AdminContext);
   
   const [showToast, setShowToast] = useState(false)
   const toast = {showToast, setShowToast}
@@ -30,6 +31,9 @@ const SignIn = () => {
       localStorage.clear()
       //router.reload()
     } else{
+      if(localStorage.getItem('is_admin') === '1'){
+        setIsAdmin(true)
+      } else { setIsAdmin(false) }
       router.push('/')
     }
   }

@@ -47,6 +47,7 @@ def create_app():
         from routes.delete_account import delete_account
         from routes.delete_bet import delete_bet
         from routes.change_username import change_username
+        from routes.register_result import register_result
 
         app.register_blueprint(home)
         app.register_blueprint(user_data)
@@ -60,5 +61,6 @@ def create_app():
         app.register_blueprint(delete_bet)
         app.register_blueprint(list_ranking)
         app.register_blueprint(change_username)
+        app.register_blueprint(register_result)
 
     return app

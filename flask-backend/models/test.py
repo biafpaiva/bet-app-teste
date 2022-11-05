@@ -1,11 +1,12 @@
 import sqlite3
 import warnings
 import pandas as pd
-from match import Match
-from pandas.core.common import SettingWithCopyWarning
+from services.utils import get_db_connection
+from models.match import Match
+#from pandas.core.common import SettingWithCopyWarning
 
-warnings.simplefilter(action="ignore", category=SettingWithCopyWarning)
-warnings.simplefilter(action='ignore', category=FutureWarning)
+#warnings.simplefilter(action="ignore", category=SettingWithCopyWarning)
+#warnings.simplefilter(action='ignore', category=FutureWarning)
 
 def score(real_home, real_away, real_winner, bet_home, bet_away, bet_winner, bet_user, id_game):
     '''Acertar placar exato 10;
@@ -26,14 +27,15 @@ def score(real_home, real_away, real_winner, bet_home, bet_away, bet_winner, bet
     if real_home == bet_home and real_away == bet_away and real_winner != "no":
         score = 10
 
-    with sqlite3.connect('C:/Users/biaf6/Documents/UFMG/ES/bet-app-master/flask-backend/database/database.db') as con:
+    with get_db_connection() as con:
         cur = con.cursor()
         cur.execute('UPDATE bets SET score = ? WHERE email = ? and id_game == ?', (score, bet_user, id_game))
+        cur.execute('UPDATE users SET score = score + ? WHERE email = ?', (score, bet_user))
         con.commit()
 
 
 def bet_score():
-    with sqlite3.connect('C:/Users/biaf6/Documents/UFMG/ES/bet-app-master/flask-backend/database/database.db') as con:
+    with get_db_connection() as con:
         cur = con.cursor()
         finished_game = list(cur.execute('SELECT * FROM matches WHERE is_over == 1'))
 
@@ -71,12 +73,12 @@ def calc_teams_score(df, df_countrys):
     return new_df
 
 def oitavas(user_email):
-    with sqlite3.connect('C:/Users/biaf6/Documents/UFMG/ES/bet-app-master/flask-backend/database/database.db') as con:
+    with get_db_connection() as con:
         cur = con.cursor()
 
     bets = list(cur.execute('SELECT * FROM bets WHERE email = ?', [user_email]))
     df_bets = pd.DataFrame(bets).rename(columns={1: 'home_score', 2: 'visitor_score', 3:'id_game', 4: 'email', 5: 'winner', 6: 'score', 7: 'group'}).drop(0, axis=1)
-    df_jogos1 = pd.read_json("C:/Users/biaf6/Documents/UFMG/ES/bet-app-master/flask-backend/database/jogos-1.json").filter(['id', 'home', 'visitor']).rename(columns={'id':'id_game'})
+    df_jogos1 = pd.read_json("/database/jogos-1.json").filter(['id', 'home', 'visitor']).rename(columns={'id':'id_game'})
     df = pd.merge(df_bets, df_jogos1, on=['id_game'])
     df_countrys = pd.DataFrame(df.filter(['group', 'home'])).drop_duplicates()
     df_countrys['team_score'] = 0
@@ -102,7 +104,7 @@ def points_by_teams(teams_passed, user_email):
     return(new_points)
 
 def sum_all_bets_scores(user_email):
-    with sqlite3.connect('C:/Users/biaf6/Documents/UFMG/ES/bet-app-master/flask-backend/database/database.db') as con:
+    with get_db_connection() as con:
         cur = con.cursor()
 
     score_by_bets = list(cur.execute('SELECT score FROM bets WHERE email = ?', [user_email]))
