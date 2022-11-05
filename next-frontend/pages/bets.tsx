@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
 import requestService from '../service/api/request.service';
 import { tabBarContext } from './_app';
-
 import { IBet } from '../types/bets';
 import { useRouter } from 'next/router';
 

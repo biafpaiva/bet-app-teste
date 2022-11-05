@@ -1,7 +1,6 @@
 import type { NextPage } from 'next'
-import { useState, useEffect, createContext, useContext } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { IMatch } from '../types/match'
-
 import requestService from '../service/api/request.service';
 import Card from '../components/Card';
 import Link from 'next/link';

@@ -1,7 +1,5 @@
 import { useState, useEffect, useContext } from 'react'
-
 import { IUser } from '../types/user'
-
 import requestService from '../service/api/request.service';
 import RankingCard from '../components/rankingCard';
 import { tabBarContext } from './_app';

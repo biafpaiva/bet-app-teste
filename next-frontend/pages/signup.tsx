@@ -1,7 +1,5 @@
-import { useMemo, useRef, useState, useEffect } from 'react'
-import PropTypes from 'prop-types'
+import {useState, useContext } from 'react'
 import MainLayout from '../layouts/MainLayout'
-import { useContext } from "react";
 import { tabBarContext } from '../pages/_app'
 import { useRouter } from 'next/router';
 

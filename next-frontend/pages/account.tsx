@@ -1,9 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
-import { getPicture } from '../utils/getPicture';
 import requestService from '../service/api/request.service';
 import { tabBarContext } from './_app';
 import { useRouter } from 'next/router';
-import Image from 'next/image';
 
 const Account = () => {
 
