@@ -1,15 +1,21 @@
-import { useState, useEffect } from 'react'
+import { useState, useContext, createContext } from 'react'
 import MainLayout from '../layouts/MainLayout'
 import requestService from '../service/api/request.service';
-import { useContext } from "react";
 import { tabBarContext } from '../pages/_app'
 import { useRouter } from 'next/router';
+import Toast from '../components/Toast'
+
+export const ToastContext = createContext<any>(undefined);
 
 const SignIn = () => {
   const router = useRouter()
   
   const { showTabBar, setShowTabBar } = useContext(tabBarContext);
   setShowTabBar(false)
+
+  
+  const [showToast, setShowToast] = useState(false)
+  const toast = {showToast, setShowToast}
 
   const [user, setUser] = useState({
     email: "",
@@ -18,9 +24,14 @@ const SignIn = () => {
 
   const handleLogin = async (e: any) => {
     e.preventDefault()
-    await requestService.loginUser(user)
-    //e.preventDefault()
-    router.push('/')
+    const response = await requestService.loginUser(user)
+    if (response === 'Invalid UserId / Password'){
+      setShowToast(true)
+      localStorage.clear()
+      //router.reload()
+    } else{
+      router.push('/')
+    }
   }
 
   const handleClick = (e: any) => {
@@ -52,6 +63,8 @@ const SignIn = () => {
                   }))}} id="password" name="password" type="password" required className="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" placeholder="Password"/>
               </div>
             </div>
+
+            {showToast && <Toast/>}
       
             <div>
               <button onClick={handleLogin} className="group relative flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
