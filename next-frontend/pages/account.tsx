@@ -9,7 +9,7 @@ const Account = () => {
   const { showTabBar, setShowTabBar } = useContext(tabBarContext);
   setShowTabBar(true)
 
-  const [user, setUser] = useState<any>({username: '', email: ''})
+  const [user, setUser] = useState<any>()
   const router = useRouter()
   
   useEffect(() => {
@@ -21,15 +21,14 @@ const Account = () => {
   useEffect(() => {
     async function loadUserData() {
         const response: any = await requestService.getUserData()
-        setUser(response)
-        console.log(response.data)
+        setUser(response.data[0])
     }
     loadUserData();
   }, [])  
 
   const handleLogout = (e: any) => {
     e.preventDefault()
-    localStorage.clear()
+    requestService.logoutUser()
     router.push('/signin')
     
   }
@@ -40,8 +39,8 @@ const Account = () => {
           <img src={getPicture()} alt="" />
         </div>
         
-        <h2 className='text-center font-bold tracking-tight text-primaryLight text-xl'>ASSA</h2>
-        <p className='text-center text-primaryLight text-lg'>ASAS</p>
+        <h2 className='text-center font-bold tracking-tight text-primaryLight text-xl'>{user?.username}</h2>
+        <p className='text-center text-primaryLight text-lg'>{user?.email}</p>
 
         {/* <button className='flex items-center mt-[60px] pb-2'>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">

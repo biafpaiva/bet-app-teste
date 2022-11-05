@@ -12,7 +12,7 @@ def show_list_bets():
     cursor.execute("SELECT email FROM users WHERE logged = 1")
     email = cursor.fetchone()
     email2 = ' '.join([str(elem) for elem in email]) 
-    query = "SELECT bets.email, matches.teams, matches.round FROM bets INNER JOIN matches ON bets.id_game=matches.id_ WHERE bets.email = '" + email2 + "'"
+    query = "SELECT bets.email, bets.id_game, matches.teams, matches.round FROM bets INNER JOIN matches ON bets.id_game=matches.id_ WHERE bets.email = '" + email2 + "'"
     cursor.execute(query)
     bets = [dict((cursor.description[i][0], value) \
                for i, value in enumerate(row)) for row in cursor.fetchall()]

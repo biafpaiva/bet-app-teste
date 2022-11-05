@@ -1,5 +1,6 @@
 export interface IBet {
     email: string,
     round: number,
-    teams: string
+    teams: string,
+    id_game: string
 }

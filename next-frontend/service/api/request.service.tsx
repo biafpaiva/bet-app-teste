@@ -1,5 +1,6 @@
 import api from './api'
 import PropTypes from 'prop-types'
+import { IBet } from '../../types/bets'
 
 interface PropTypes {
   email: string,
@@ -24,16 +25,20 @@ const loginUser = ({email, password}: PropTypes) => {
       "Content-Type": "multipart/form-data",
     }})
   .then((response) => {
-    if (response) {
+    if (response.data) {
          localStorage.setItem("user", JSON.stringify(response.data))
-         //console.log(response)
+         console.log(response.data.token)
     }
-    return response
+    return response.data
   })
 }
 
 const logoutUser = () => {
-  localStorage.clear
+  localStorage.clear()
+  return api.get("/logout")
+  .catch((error) => {
+    console.log(error)
+  })
 }
 
 const listMatches = () => {
@@ -48,6 +53,25 @@ const listBets = () => {
             .catch((error) => {
               console.log(error)
             })
+}
+
+const deleteBet = (bet: IBet) => {
+
+  const formData = new FormData();
+  formData.set('id_game', bet.id_game)
+  formData.set('email', bet.email)
+
+  return api.post("/delete_bet", formData, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    }})
+  .then((response) => {
+    if (response) {
+         /*localStorage.setItem("user", JSON.stringify(response.data))*/
+         console.log(response)
+    }
+    return response
+  }) 
 }
 
 
@@ -86,7 +110,8 @@ const requestService = {
     listMatches,
     listBets,
     listRanking,
-    makeBet
+    makeBet,
+    deleteBet
 }
 
 export default requestService
