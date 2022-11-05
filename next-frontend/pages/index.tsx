@@ -6,8 +6,15 @@ import requestService from '../service/api/request.service';
 import Card from '../components/Card';
 import Link from 'next/link';
 import { tabBarContext } from './_app';
+import { useRouter } from 'next/router';
 
 const Home: NextPage = () => {
+  const router = useRouter()
+  useEffect(() => {
+    if (localStorage.getItem("user") === null){
+      router.push('/signin')
+    }
+  }, []);  
 
   const { showTabBar, setShowTabBar } = useContext(tabBarContext);
   setShowTabBar(true)
@@ -36,7 +43,8 @@ const Home: NextPage = () => {
                   rodada: match.round,
                   data: match.date,
                   hora: match.time,
-                  estadio: match.stadium
+                  estadio: match.stadium,
+                  grupo: match.group
                   }}} >
                   <div className="pt-5">
                     <Card key={match.id} match={ match }

@@ -14,14 +14,26 @@ const getUserData = () => {
 }
 
 const loginUser = ({email, password}: PropTypes) => {
-  return api.post("/login_user", {'email': email, 'password': password})
+
+  const formData = new FormData();
+  formData.set('email', email)
+  formData.set('password', password)
+
+  return api.post("/login_user", formData, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    }})
   .then((response) => {
     if (response) {
-         /*localStorage.setItem("user", JSON.stringify(response.data))*/
-         console.log(response)
+         localStorage.setItem("user", JSON.stringify(response.data))
+         //console.log(response)
     }
     return response
   })
+}
+
+const logoutUser = () => {
+  localStorage.clear
 }
 
 const listMatches = () => {
@@ -46,12 +58,13 @@ const listRanking = () => {
             })
 }
 
-const makeBet = ({home_score, away_score, id_game}: any) => {
+const makeBet = ({home_score, away_score, id_game, id_group}: any) => {
 
   const formData = new FormData();
   formData.set('home_score', home_score)
   formData.set('away_score', away_score)
   formData.set('game_id', id_game)
+  formData.set('id_group', id_group)
 
   return api.post("/make_bet", formData, {
     headers: {
@@ -69,6 +82,7 @@ const makeBet = ({home_score, away_score, id_game}: any) => {
 const requestService = {
     getUserData,
     loginUser,
+    logoutUser,
     listMatches,
     listBets,
     listRanking,

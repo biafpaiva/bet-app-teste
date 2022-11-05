@@ -5,6 +5,7 @@ import { IUser } from '../types/user'
 import requestService from '../service/api/request.service';
 import RankingCard from '../components/rankingCard';
 import { tabBarContext } from './_app';
+import { useRouter } from 'next/router';
 
 const Ranking = () => {
 
@@ -12,6 +13,13 @@ const Ranking = () => {
   setShowTabBar(true)  
 
   const [users, setUsers] = useState<IUser[]>([])
+  const router = useRouter()
+
+  useEffect(() => {
+    if (localStorage.getItem("user") === null){
+      router.push('/signin')
+    }
+  }, []);
 
   useEffect(() => {
     async function loadGames() {

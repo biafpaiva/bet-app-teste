@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import { getPicture } from '../utils/getPicture';
 import requestService from '../service/api/request.service';
 import { tabBarContext } from './_app';
+import { useRouter } from 'next/router';
 
 const Account = () => {
 
@@ -9,6 +10,13 @@ const Account = () => {
   setShowTabBar(true)
 
   const [user, setUser] = useState<any>({username: '', email: ''})
+  const router = useRouter()
+  
+  useEffect(() => {
+    if (localStorage.getItem("user") === null){
+      router.push('/signin')
+    }
+  }, []);
 
   useEffect(() => {
     async function loadUserData() {
@@ -19,14 +27,21 @@ const Account = () => {
     loadUserData();
   }, [])  
 
+  const handleLogout = (e: any) => {
+    e.preventDefault()
+    localStorage.clear()
+    router.push('/signin')
+    
+  }
+
   return (
     <div className='flex flex-col min-w-screen min-h-screen bg-primaryDark pt-[60px] px-6 justify-items-center text-primaryLight'>
         <div className='w-[120px] mb-6 mx-auto bg-primaryLight aspect-square rounded-full overflow-hidden'>
           <img src={getPicture()} alt="" />
         </div>
         
-        <h2 className='text-center font-bold tracking-tight text-primaryLight text-xl'>{user.username}</h2>
-        <p className='text-center text-primaryLight text-lg'>{user.email}</p>
+        <h2 className='text-center font-bold tracking-tight text-primaryLight text-xl'>ASSA</h2>
+        <p className='text-center text-primaryLight text-lg'>ASAS</p>
 
         {/* <button className='flex items-center mt-[60px] pb-2'>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -35,8 +50,8 @@ const Account = () => {
           <div className='ml-4'>Change username</div>
         </button>
         <hr className='border-secondaryDark'/> */}
-        <form action="http://localhost:5000/logout">
-          <button type='submit' className='flex items-center mt-[60px] pb-2'>
+        <form >
+          <button onClick={handleLogout} type='submit' className='flex items-center mt-[60px] pb-2'>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
               <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" />
             </svg>

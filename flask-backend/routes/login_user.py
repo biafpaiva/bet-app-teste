@@ -1,4 +1,4 @@
-from flask import Blueprint, request, session, redirect, url_for
+from flask import Blueprint, request, session, redirect, url_for, jsonify
 from flask_cors import cross_origin
 from services.utils import is_valid, get_db_connection
 
@@ -18,7 +18,10 @@ def show_login_user():
             cur.execute("UPDATE users SET logged = 1 WHERE email = '" + email + "'")
             db.commit()
 
-            return redirect('http://localhost:3000/')
+            data = [{'email': email, 'password': password}]
+
+            #return redirect('http://localhost:3000/')
+            return jsonify(data)
         else:
             error = 'Invalid UserId / Password'
             return error

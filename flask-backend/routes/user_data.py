@@ -1,4 +1,4 @@
-from flask import Blueprint, session, jsonify
+from flask import Blueprint, jsonify
 from services.utils import get_db_connection
 
 user_data = Blueprint('user_data', __name__)

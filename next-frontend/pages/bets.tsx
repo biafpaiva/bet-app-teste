@@ -3,12 +3,19 @@ import requestService from '../service/api/request.service';
 import { tabBarContext } from './_app';
 
 import { IBet } from '../types/bets';
-
+import { useRouter } from 'next/router';
 
 const Bets = () => {
 
   const { showTabBar, setShowTabBar } = useContext(tabBarContext);
   setShowTabBar(true)
+  const router = useRouter()
+
+  useEffect(() => {
+    if (localStorage.getItem("user") === null){
+      router.push('/signin')
+    }
+  }, []);  
 
   const [bets, setBets] = useState<IBet[]>([])
 

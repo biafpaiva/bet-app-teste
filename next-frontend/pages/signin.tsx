@@ -16,6 +16,14 @@ const SignIn = () => {
     password: ""
   })
 
+  const handleLogin = (e: any) => {
+    //e.preventDefault()
+    requestService.loginUser(user)
+    e.preventDefault()
+    router.push('/')
+    router.push('/')
+  }
+
   const handleClick = (e: any) => {
     e.preventDefault()
     router.push('/signup')
@@ -47,7 +55,7 @@ const SignIn = () => {
             </div>
       
             <div>
-              <button type="submit" className="group relative flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+              <button onClick={handleLogin} className="group relative flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                 <span className="absolute inset-y-0 left-0 flex items-center pl-3">
                   
                   <svg className="h-5 w-5 text-indigo-500 group-hover:text-indigo-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">

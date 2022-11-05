@@ -10,8 +10,14 @@ const MatchInfo = () => {
   setShowTabBar(true)
 
   const router = useRouter()
-  const {partida, rodada, data, hora, estadio, key} = router.query
+  const {partida, rodada, data, hora, estadio, key, grupo} = router.query
   const [showModal, setShowModal] = useState(false);
+
+  useEffect(() => {
+    if (localStorage.getItem("user") === null){
+      router.push('/signin')
+    }
+  }, []);
 
   const handleBet = () => {
     requestService.makeBet(bet)
@@ -22,6 +28,7 @@ const MatchInfo = () => {
     home_score: '',
     away_score: '',
     id_game: key,
+    id_group: grupo
   })
 
   return (

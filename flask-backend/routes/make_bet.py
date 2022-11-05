@@ -17,5 +17,6 @@ def show_make_bet():
         home_score = int(request.form['home_score'])
         away_score = int(request.form['away_score'])
         game_id = request.form['game_id']
-        Bet.make_bet(Bet(home_score, away_score, game_id, email2))
+        group_id = request.form['id_group']
+        Bet.make_bet(Bet(home_score, away_score, game_id, email2, group_id))
         return str(away_score)
