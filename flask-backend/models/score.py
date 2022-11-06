@@ -4,30 +4,39 @@ import pandas as pd
 from services.utils import get_db_connection
 from models.match import Match
 
-def score(real_home, real_away, real_winner, bet_home, bet_away, bet_winner, bet_user, id_game):
-    '''Acertar placar exato 10;
-    Acertar vencedor e um placar 6;
-    Acertar vencedor ou empate não exato 3;
-    Acertar apenas um placar 1; Não exato 0. *
-    Oitavas e quartas de Final multiplica-se por 2; **
-    Semi, disputa de terceiro e quarto lugar e final multiplica-se por 3.
-    Obs: Os pontos não são acumulativos por jogo.'''
 
-    score = 0
-    if real_home == bet_home or real_away == bet_away:
-        score = 1
-    if real_winner == bet_winner or (real_winner == "no" and real_home != bet_home):
-        score = 3
-    if real_winner == bet_winner and (real_home == bet_home or real_away == bet_away) and real_winner != "no":
-        score = 6
-    if real_home == bet_home and real_away == bet_away and real_winner != "no":
-        score = 10
+def is_perfect_bet(real_home, bet_home, real_away, bet_away):
+    return real_home == bet_home and real_away == bet_away
 
-    with get_db_connection() as con:
-        cur = con.cursor()
-        cur.execute('UPDATE bets SET score = ? WHERE email = ? and id_game == ?', (score, bet_user, id_game))
-        cur.execute('UPDATE users SET score = score + ? WHERE email = ?', (score, bet_user))
-        con.commit()
+def is_correct_winner_partial_result(real_winner, bet_winner, real_home, bet_home, real_away, bet_away):
+    return real_winner == bet_winner and (real_home == bet_home or real_away == bet_away) and real_winner != "no"
+
+def is_correct_winner_wrong_result(real_winner, bet_winner, real_home, bet_home):
+    return real_winner == bet_winner or (real_winner == "no" and real_home != bet_home)
+
+def is_wrong_winner_partial_result(real_home, bet_home, real_away, bet_away):
+    return real_home == bet_home or real_away == bet_away
+
+def calculate_user_score(real_winner, bet_winner, real_home, bet_home, real_away, bet_away):
+    if is_perfect_bet(real_home, bet_home, real_away, bet_away):
+        return 10
+    if is_correct_winner_partial_result(real_winner, bet_winner, real_home, bet_home, real_away, bet_away):
+        return 6
+    if is_correct_winner_wrong_result(real_winner, bet_winner, real_home, bet_home):
+        return 3
+    if is_wrong_winner_partial_result(real_home, bet_home, real_away, bet_away):
+        return 1
+    return 0
+
+def register_user_score(real_home, real_away, real_winner, bet_home, bet_away, bet_winner, bet_user, id_game):
+
+    user_score = calculate_user_score(real_winner, bet_winner, real_home, bet_home, real_away, bet_away)
+
+    with get_db_connection() as bet_database_connection:
+        database_cursor = bet_database_connection.cursor()
+        database_cursor.execute('UPDATE bets SET score = ? WHERE email = ? and id_game == ?', (user_score, bet_user, id_game))
+        database_cursor.execute('UPDATE users SET score = score + ? WHERE email = ?', (user_score, bet_user))
+        bet_database_connection.commit()
 
 
 def bet_score():
@@ -41,14 +50,14 @@ def bet_score():
             real_away = finished_game[i][11]
             real_winner = finished_game[i][13]
 
-            bets_finished_game = list(cur.execute('SELECT * FROM bets WHERE id_game == ?', id_game))
+            bets_finished_game = list(cur.execute('SELECT * FROM bets WHERE id_game == ?', (id_game, )))
             for j in range(len(bets_finished_game)):
                 bet_home = bets_finished_game[j][1]
                 bet_away = bets_finished_game[j][2]
                 bet_user = bets_finished_game[j][4]
                 bet_winner = bets_finished_game[j][5]
 
-                score(real_home, real_away, real_winner, bet_home, bet_away, bet_winner, bet_user, id_game)
+                register_user_score(real_home, real_away, real_winner, bet_home, bet_away, bet_winner, bet_user, id_game)
 
 def calc_teams_score(df, df_countrys):
     '''São oito grupos e as duas equipes mais bem colocadas destas classificam-se para os oitavos de final,
