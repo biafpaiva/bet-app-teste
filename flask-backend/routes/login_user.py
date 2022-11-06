@@ -6,6 +6,7 @@ login_user = Blueprint('login_user', __name__)
 
 @login_user.route('/login_user', methods = ['GET', 'POST'])
 @cross_origin()
+
 def show_login_user():
     if request.method == 'POST':
         email = request.form['email']
