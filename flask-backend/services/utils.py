@@ -1,6 +1,12 @@
 from flask import session
 import sqlite3, random
 
+def valid_request(request):
+    return  request.method == 'POST' and \
+                              'username' in request.form and \
+                              'password' in request.form and \
+                              'email' in request.form
+                              
 def is_valid(email, senha):
     con = sqlite3.connect('database/database.db')
     cur = con.cursor()
