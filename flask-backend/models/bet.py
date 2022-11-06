@@ -1,4 +1,5 @@
 import sqlite3
+from services.utils import get_db_connection
 
 class Bet:
     def __init__(self, home_score, visitor_score, id_game, email, group):
@@ -11,30 +12,24 @@ class Bet:
         self.group_ = group
 
     def make_bet(self):
-        home_score = self.home_score
-        visitor_score = self.visitor_score
-        id_game = self.id_game
-        email = self.email
 
-        if home_score > visitor_score:
-            self.winner = "home"
-        if home_score < visitor_score:
-            self.winner = "away"
-        if home_score == visitor_score:
-            self.winner = "no"
+        self.get_bet_winner()
 
-        with sqlite3.connect('database/database.db') as con:
+        with get_db_connection() as bet_database_connection:
             try:
-                cur = con.cursor()
-                cur.execute('INSERT INTO bets (home_score, visitor_score, id_game, email, winner, score, group_) VALUES (?, ?, ?, ?, ?, ?, ?)',
-                            (int(home_score), int(visitor_score), int(id_game), str(email), str(self.winner), 0, str(self.group_)))
-
-                con.commit()
-
-                msg = "Registered Successfully"
+                database_cursor = bet_database_connection.cursor()
+                database_cursor.execute('INSERT INTO bets (home_score, visitor_score, id_game, email, winner, score, group_) VALUES (?, ?, ?, ?, ?, ?, ?)',
+                           (int(self.home_score), int(self.visitor_score), int(self.id_game), str(self.email), str(self.winner), 0, str(self.group_)))
+                bet_database_connection.commit()          
             except:
-                con.rollback()
-                msg = "Error occured"
-        con.close()
+                bet_database_connection.rollback()
 
-        return 
+        bet_database_connection.close()
+
+    def get_bet_winner(self):
+        if self.home_score > self.visitor_score:
+            self.winner = "home"
+        elif self.home_score < self.visitor_score:
+            self.winner = "away"
+        else:
+            self.winner = "no"
