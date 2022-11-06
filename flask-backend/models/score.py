@@ -3,10 +3,6 @@ import warnings
 import pandas as pd
 from services.utils import get_db_connection
 from models.match import Match
-#from pandas.core.common import SettingWithCopyWarning
-
-#warnings.simplefilter(action="ignore", category=SettingWithCopyWarning)
-#warnings.simplefilter(action='ignore', category=FutureWarning)
 
 def score(real_home, real_away, real_winner, bet_home, bet_away, bet_winner, bet_user, id_game):
     '''Acertar placar exato 10;
