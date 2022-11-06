@@ -1,6 +1,6 @@
 # The App
 ## **1. Description**
-Bla bla bla project for software engineer class (dcc072)
+BetApp project for software engineer class (dcc072)
 
 ## **2. How to run**
 
