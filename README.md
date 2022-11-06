@@ -20,13 +20,13 @@ World Cup BetApp project for software engineer class (dcc072), a web application
 <br/>
 
 <p align="center">
-<img src="https://sat02pap005files.storage.live.com/y4mLVnskL3igzdOJKMO6g5NtvEpMOEwl85ECwBQpUd0Zymj1uueoqnbn8_SHQlNR8Y1n2MaDmm9ieGoc03D7mL235OP5a2UxROdhxQB2qeB66s4hBzvwS62dkWhClj4OGdfccTJAStdd4YDiMO6Yz8SCdP0T0QfGhJSd0LC3seU1mWah8ksxwmar2Rjzy1XEoKeXjOc6YIus-Q3GoWdKDIcdBYaKiWD_MrDZX3bCLAxBUw?encodeFailures=1&width=380&height=824" height="300">
+<img src="https://sat02pap005files.storage.live.com/y4mLVnskL3igzdOJKMO6g5NtvEpMOEwl85ECwBQpUd0Zymj1uueoqnbn8_SHQlNR8Y1n2MaDmm9ieGoc03D7mL235OP5a2UxROdhxQB2qeB66s4hBzvwS62dkWhClj4OGdfccTJAStdd4YDiMO6Yz8SCdP0T0QfGhJSd0LC3seU1mWah8ksxwmar2Rjzy1XEoKeXjOc6YIus-Q3GoWdKDIcdBYaKiWD_MrDZX3bCLAxBUw?encodeFailures=1&width=380&height=824" height="360">
   
-<img src="https://sat02pap005files.storage.live.com/y4mqf8gwtgT_dsTCoAYtYeBh20MD98QWdWN-BGyPhU3ABFlbNxBwuR2Sqvn6qiNjV6405h2LkHQRgyhGkU8b3MAK6v4s73MKsoFgZncr99w94M840sGajk64tLF5220z10XgQRv8PjR_OannjlbcPmk-eRzf4F-g9j7_UL39kfbGQSVX2jMePczCD1F2gGNZNO5_cA4LA9-d8sY0iE0hi6aI6-Enc81zEVg4J-sNwjsQTU?encodeFailures=1&width=407&height=880" height="300" hspace="5">
+<img src="https://sat02pap005files.storage.live.com/y4mqf8gwtgT_dsTCoAYtYeBh20MD98QWdWN-BGyPhU3ABFlbNxBwuR2Sqvn6qiNjV6405h2LkHQRgyhGkU8b3MAK6v4s73MKsoFgZncr99w94M840sGajk64tLF5220z10XgQRv8PjR_OannjlbcPmk-eRzf4F-g9j7_UL39kfbGQSVX2jMePczCD1F2gGNZNO5_cA4LA9-d8sY0iE0hi6aI6-Enc81zEVg4J-sNwjsQTU?encodeFailures=1&width=407&height=880" height="360" hspace="5">
   
-<img src="https://sat02pap005files.storage.live.com/y4m56_HgqoMywrOsW_BSP7k6O-i7r44YAnh3VtnDL16T4v9dVHqSSYPIZGRuvUy9bzUgT0Nv4PQvKSigrOOT8EUpBMjz-s5uj2JqfCLKUNtcF2cZ6h5euOooUyKAhTkryp0-7z-GpgJHo5L_XydV7jiboKvpTNuIodq6rMTOY7gQhrIujrTmCAP1phgQtIU6TCWffNZNnNSCTrvYZaqkSorwzEk_ZSJEJItblAPbtgUF7I?encodeFailures=1&width=407&height=880" height="300" hspace="5">  
+<img src="https://sat02pap005files.storage.live.com/y4m56_HgqoMywrOsW_BSP7k6O-i7r44YAnh3VtnDL16T4v9dVHqSSYPIZGRuvUy9bzUgT0Nv4PQvKSigrOOT8EUpBMjz-s5uj2JqfCLKUNtcF2cZ6h5euOooUyKAhTkryp0-7z-GpgJHo5L_XydV7jiboKvpTNuIodq6rMTOY7gQhrIujrTmCAP1phgQtIU6TCWffNZNnNSCTrvYZaqkSorwzEk_ZSJEJItblAPbtgUF7I?encodeFailures=1&width=407&height=880" height="360" hspace="5">  
   
-<img src="https://sat02pap005files.storage.live.com/y4mZHPl4KfZXjenvzKODSB9XftgfIGLk5z3gGWn2y3cTpn55_ruyJljhXKQHDQXq3_h-5o0vVRtg3g7LpnMd0NcGPlg5uO-qTjOB-Fq1U6668ZquCeJ6r2ITlrIj3zUyDBtB0GvOPcw4Ilf2gk2DB0PUyjVW53VaHl9ZTIyjlDKl0l-edaKgLyad-KuKVqU0GLzEcEXDwWjSTcIgQhZSiDmG44ZQ57tDykhu4ANBcaAjw8?encodeFailures=1&width=380&height=824" height="300" hspace="5">  
+<img src="https://sat02pap005files.storage.live.com/y4mZHPl4KfZXjenvzKODSB9XftgfIGLk5z3gGWn2y3cTpn55_ruyJljhXKQHDQXq3_h-5o0vVRtg3g7LpnMd0NcGPlg5uO-qTjOB-Fq1U6668ZquCeJ6r2ITlrIj3zUyDBtB0GvOPcw4Ilf2gk2DB0PUyjVW53VaHl9ZTIyjlDKl0l-edaKgLyad-KuKVqU0GLzEcEXDwWjSTcIgQhZSiDmG44ZQ57tDykhu4ANBcaAjw8?encodeFailures=1&width=380&height=824" height="360" hspace="5">  
 </p>
 
 <br/>
