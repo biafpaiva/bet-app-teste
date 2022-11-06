@@ -1,5 +1,16 @@
 # The App
-## **1. Description**
+## **1. General info**
+
+### **Group members**
+
+<ul>
+  <li>Beatriz Paiva</li>
+  <li>Cecília Kind</li>
+  <li>Ilana Barbosa</li>
+</ul>
+
+### **System description**
+
 World Cup BetApp project for software engineer class (dcc072), a web application made with NEXTJS and FLASK. This program supports two kinds of users: gamblers and one  administrator. In general, gamblers can make bets and compare score with other users in a rank. The administrator is responsible for the registration of the match real results. There also are other features like delete bets and change username. 
 
 <br/>
@@ -28,6 +39,12 @@ World Cup BetApp project for software engineer class (dcc072), a web application
   
 <img src="https://sat02pap005files.storage.live.com/y4mZHPl4KfZXjenvzKODSB9XftgfIGLk5z3gGWn2y3cTpn55_ruyJljhXKQHDQXq3_h-5o0vVRtg3g7LpnMd0NcGPlg5uO-qTjOB-Fq1U6668ZquCeJ6r2ITlrIj3zUyDBtB0GvOPcw4Ilf2gk2DB0PUyjVW53VaHl9ZTIyjlDKl0l-edaKgLyad-KuKVqU0GLzEcEXDwWjSTcIgQhZSiDmG44ZQ57tDykhu4ANBcaAjw8?encodeFailures=1&width=380&height=824" height="360" hspace="5">  
 </p>
+
+<br/>
+
+### **About the chosen technologies**
+
+We wanted to work with Python because we have more familiarity. Therefore, the selected framework for the backend was Flask, which is straightforward to use, understand and it has a massive user base among the tech community. For the frontend we used Next.js, a framework widely used by the biggest and most popular companies all over the world like Netflix, Uber, Starbucks, or Twitch. It's considered more clever than React, offers faster page loading times, rapid feature development and rich user experience. We also used Tailwind for efficient styling, easy responsive layout and flexible customization.
 
 <br/>
 
