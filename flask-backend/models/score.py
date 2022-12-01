@@ -31,7 +31,7 @@ def calculate_user_score(real_winner, bet_winner, real_home, bet_home, real_away
 def register_user_score(real_home, real_away, real_winner, bet_home, bet_away, bet_winner, bet_user, id_game):
 
     user_score = calculate_user_score(real_winner, bet_winner, real_home, bet_home, real_away, bet_away)
-
+    print(user_score)
     with get_db_connection() as bet_database_connection:
         database_cursor = bet_database_connection.cursor()
         database_cursor.execute('UPDATE bets SET score = ? WHERE email = ? and id_game == ?', (user_score, bet_user, id_game))
