@@ -2,20 +2,6 @@ import pytest
 from flask_backend.models.score import *
 from flask_backend.models.bet import Bet
 
-
-@pytest.fixture()
-def app():
-    app = create_app()
-    app.secret_key = 'super secret key'
-    app.config.update({
-        "TESTING": True,
-    })
-    yield app
-
-@pytest.fixture
-def client(app):
-    return app.test_client()
-
 def test_calculate_perfect_score():
 	user_score = calculate_user_score('Brasil', 'Brasil', 1, 1, 0, 0)
 	assert(user_score == 10)
