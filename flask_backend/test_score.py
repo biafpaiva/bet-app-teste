@@ -1,13 +1,6 @@
 import pytest
 from flask_backend.models.score import *
 from flask_backend.models.bet import Bet
-from flask_backend.database.create_database import set_database
-
-@pytest.fixture(autouse=True)
-def run_around_tests():
-    set_database()
-    yield
-    set_database()
 
 def test_calculate_perfect_score():
 	user_score = calculate_user_score('Brasil', 'Brasil', 1, 1, 0, 0)
