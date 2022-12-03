@@ -1,5 +1,5 @@
 from flask import Blueprint
-from services.utils import getLoginDetails
+from flask_backend.services.utils import getLoginDetails
 
 home = Blueprint('home', __name__)
 @home.route("/")

@@ -1,0 +1,7 @@
+
+.python-version
+venv
+.venv
+.vscode
+.pytest_cache
+

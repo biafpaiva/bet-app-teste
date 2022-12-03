@@ -1,6 +1,6 @@
 from flask import Blueprint, request, session, redirect
-from models.user import User
-from services.utils import is_valid, getImage, valid_request
+from flask_backend.models.user import User
+from flask_backend.services.utils import is_valid, getImage, valid_request
 
 register_user = Blueprint('register_user', __name__)
 @register_user.route('/register_user', methods = ['GET', 'POST'])

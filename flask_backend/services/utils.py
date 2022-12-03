@@ -1,14 +1,16 @@
 from flask import session
 import sqlite3, random
+from contextlib import contextmanager
+from flask_backend import dbFilePath
 
 def valid_request(request):
     return  request.method == 'POST' and \
                               'username' in request.form and \
                               'password' in request.form and \
                               'email' in request.form
-                              
+
 def is_valid(email, senha):
-    con = sqlite3.connect('database/database.db')
+    con = sqlite3.connect(dbFilePath)
     cur = con.cursor()
     cur.execute('SELECT email, password FROM users')
     data = cur.fetchall()
@@ -18,7 +20,7 @@ def is_valid(email, senha):
     return False
 
 def getLoginDetails():
-    with sqlite3.connect('database/database.db') as conn:
+    with sqlite3.connect(dbFilePath) as conn:
         cur = conn.cursor()
         if 'email' not in session:
             loggedIn = False
@@ -33,9 +35,14 @@ def getLoginDetails():
     conn.close()
     return (loggedIn, username, session['email'])
 
+@contextmanager
 def get_db_connection():
-    conn = sqlite3.connect('database/database.db')
-    return conn
+    try:
+        conn = sqlite3.connect(dbFilePath)
+    except Exception:
+        from pathlib import Path
+        raise Exception(f"Couldn't find {dbFilePath} in cwd: {Path('.').resolve()}")
+    yield conn
 
 def getImage():
     images = [

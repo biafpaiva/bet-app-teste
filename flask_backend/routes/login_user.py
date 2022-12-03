@@ -1,6 +1,6 @@
 from flask import Blueprint, request, session, redirect, url_for, jsonify
 from flask_cors import cross_origin
-from services.utils import is_valid, get_db_connection
+from flask_backend.services.utils import is_valid, get_db_connection
 
 login_user = Blueprint('login_user', __name__)
 

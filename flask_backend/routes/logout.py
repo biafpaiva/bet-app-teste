@@ -1,5 +1,5 @@
 from flask import Blueprint, session, redirect, url_for
-from services.utils import get_db_connection
+from flask_backend.services.utils import get_db_connection
 
 logout = Blueprint('logout', __name__)
 @logout.route('/logout', methods = ['GET'])

@@ -1,4 +1,5 @@
 import sqlite3
+from flask_backend import dbFilePath
 
 class Match:
     def __init__(self, list):
@@ -25,7 +26,7 @@ class Match:
         if final_score_home == final_score_visitor:
             winner = "no"
 
-        with sqlite3.connect('database/database.db') as con:
+        with sqlite3.connect(dbFilePath) as con:
             try:
                 cur = con.cursor()
                 cur.execute('UPDATE matches SET final_score_home = ?, final_score_visitor = ?, is_over = ?, winner = ? WHERE id_ = ?',

@@ -1,7 +1,7 @@
 from flask import Blueprint, request
-from services.utils import get_db_connection
-from models.score import bet_score
-from models.match import Match
+from flask_backend.services.utils import get_db_connection
+from flask_backend.models.score import bet_score
+from flask_backend.models.match import Match
 
 register_result = Blueprint('register_result', __name__)
 @register_result.route('/register_result', methods = ['GET', 'POST'])

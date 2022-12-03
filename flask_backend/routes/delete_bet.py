@@ -1,6 +1,6 @@
 from flask import Blueprint, request, redirect
-from models.bet import Bet
-from services.utils import get_db_connection
+from flask_backend.models.bet import Bet
+from flask_backend.services.utils import get_db_connection
 from flask_cors import cross_origin
 
 delete_bet = Blueprint('delete_bet', __name__)

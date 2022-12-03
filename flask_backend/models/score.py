@@ -1,8 +1,8 @@
 import sqlite3
 import warnings
 import pandas as pd
-from services.utils import get_db_connection
-from models.match import Match
+from flask_backend.services.utils import get_db_connection
+from flask_backend.models.match import Match
 
 
 def is_perfect_bet(real_home, bet_home, real_away, bet_away):

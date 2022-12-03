@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify
-from services.utils import get_db_connection
+from flask_backend.services.utils import get_db_connection
 
 user_data = Blueprint('user_data', __name__)
 @user_data.route('/user_data', methods = ['GET'])

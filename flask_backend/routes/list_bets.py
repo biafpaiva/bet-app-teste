@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, session
-from services.utils import get_db_connection, getLoginDetails
+from flask_backend.services.utils import get_db_connection, getLoginDetails
 from flask_cors import cross_origin
 
 list_bets = Blueprint('list_bets', __name__)

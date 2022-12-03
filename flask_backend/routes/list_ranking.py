@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify
-from services.utils import get_db_connection
+from flask_backend.services.utils import get_db_connection
 
 list_ranking = Blueprint('list_ranking', __name__)
 @list_ranking.route('/list_ranking', methods = ['GET'])
